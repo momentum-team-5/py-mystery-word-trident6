@@ -1,4 +1,6 @@
-from random import choice
+
+import random
+# from random import choice
 
 # Global constants
 NUM_TURNS = 8
@@ -23,7 +25,17 @@ WORDS_FILE = "words.txt"
 #     pass
 
 
-# def play_game(word_to_guess):
+def play_game(word_to_guess):
+    print('the word is: ' + word_to_guess)
+    print(f"Your word has {len(word_to_guess)} letters.")
+    splitwtg = word_to_guess.split()
+    print(splitwtg)
+
+    # print(word_to_guess.replace('word_to_guess', ' _ '))
+
+
+    
+
 #     """
 #     1. Initialize the game state based on word_to_guess.
 #         1a. Create a set of letters that need to be guessed.
@@ -47,7 +59,7 @@ WORDS_FILE = "words.txt"
 #     """
 #     letters_to_guess = set(word_to_guess)
 #     letters_guessed = set()
-#     guesses_used = 0
+#   
 
 #     print(f"Your word has {len(word_to_guess)} letters.")
 
@@ -129,16 +141,18 @@ def run_game_loop():
     if diff == 'easy':
         with open(WORDS_FILE) as wordsfile:
             words = wordsfile.read()
-            splitlist = words.split()
-            easywords = [ew for ew in splitlist if (len(ew) >= 4 and len(ew) <= 6)]
-            print(easywords)
-
-    if diff == 'normal':
-        pass
-    if diff == 'hard':
-        pass
+        splitlist = words.split()
+        easywords = [ew for ew in splitlist if (len(ew) >= 4 and len(ew) <= 6)]
+        easyword = random.choice(easywords)
+        # print(easyword)
+        play_game(easyword)
+    elif diff == 'normal':
+            print('normalword')
+    elif diff == 'hard':
+            print('hardword')
     else:
         print('Invalid entry, You must enter "easy", "normal" or "hard"')
+        main()
 
 #     """
 #     1. Get desired user difficulty (easy, normal, hard).
